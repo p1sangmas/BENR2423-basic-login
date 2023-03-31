@@ -31,5 +31,27 @@ function login(username, password) {
     }
 }
 
+function register (newusername, newpassword, newemail) {
+    // todo: check if username exist
+    let userCheck = dbUsers.find(element =>
+        element.username == newusername
+    ) // check username in database
+    if (userCheck){
+        return "User already registered"
+    } else {
+        dbUsers.push({
+            username: newusername,
+            password: newpassword,
+            email: newemail
+        })
+    }
+    
+
+}
 //try to login
 console.log(login("fakhrul", "baga"))
+console.log(login("firdaus", "daus"))
+
+//try to register
+register("firdaus", "daus", "firdaus@gmail.com")
+console.log(register("fakhrul", "wdj", "hello@gmail.com"))
